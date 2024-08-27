@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Exam System</title>
+    <link rel="stylesheet" href="exam5.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div id="welcome-page">
+      <h1>Gifted Minds Academy (G.M.A)</h1>
+      <div id="exam-selection">
+        <label for="exam-type" class="sel">Select an Exam:</label>
+        <select id="exam-type">
+          <option value="html">HTML</option>
+          <option value="java">JAVA</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="eet224">EET224</option>
+          <option value="css">CSS</option>
+          <option value="mce1">MCE320</option>
+          <option value="mce">MCE220</option>
+        </select>
+      </div>
+      <button id="proceed-btn">Proceed to Exam</button>
+    </div>
+
+    <div id="exam-container" style="display: none">
+      <div id="timer">60:00</div>
+      <button class="calc" onclick="document.getElementById('calc1').style.display = 'block'"><i class="fa fa-calculator" aria-hidden="true"></i></button>
+      <span id="demo"></span>
+      <h1 id="exam-title">G.M.A Exam</h1>
+      <div id="question-container"></div>
+      <div id="navigation">
+        <button id="prev-btn"> <span>&lt;&lt;</span> Previous</button>
+        <button id="next-btn">Next <span>&gt;&gt;</span></button>
+        <button id="submit-btn">Submit</button>
+      </div>
+      <div id="pagination"></div>
+    </div>
+    <div id="result" style="display: none"></div>
+    <button id="new-exam-btn" style="display: none">Start New Exam</button>
+    <button id="review-btn" style="display: none">Review Answers</button>
+
+   <!--<div class="container" id="calc1" style="display: none;">
+      <form>
+          <div class="display">
+              <input type="text" name="display"  class="result">
+          </div>
+          <div>
+              <input type="button" value="AC" class="operator" onclick="display.value ='' ">
+              <input type="button" value="DE" class="operator" onclick="display.value =display.value.toString().slice(0,-1) ">
+              <input type="button" value="." onclick="display.value +='.' ">
+              <input type="button" value="/" class="operator" onclick="display.value +='/' ">
+          </div>
+          <div>
+              <input type="button" value="9" onclick="display.value += '9'">
+              <input type="button" value="8" onclick="display.value += '8'">
+              <input type="button" value="7" onclick="display.value += '7'">
+              <input type="button" value="*" class="operator" onclick="display.value += '*'">
+          </div>
+          <div>
+              <input type="button" value="6" onclick="display.value += '6'"> 
+              <input type="button" value="5" onclick="display.value += '5'">
+              <input type="button" value="4" onclick="display.value += '4'">
+              <input type="button" value="-" class="operator" onclick="display.value += '-'">
+          </div>
+          <div>
+              <input type="button" value="3" onclick="display.value += '3'">
+              <input type="button" value="2" onclick="display.value += '2'">
+              <input type="button" value="1" onclick="display.value += '1'">
+              <input type="button" value="+" class="operator" onclick="display.value += '+'">
+          </div>
+          <div>
+              <input type="button" value="0" onclick="display.value += '0'">
+              <input type="button" value="00" onclick="display.value += '00'">
+              <input type="button" value="=" class="operator" onclick="display.value = eval(display.value)">
+              <input type="button" value="X" id="close" onclick="document.getElementById('calc1').style.display = 'none'">
+          </div>
+      </form>
+  </div>-->
+  <div class="container" id="calc1" style="display:none;">
+    <form>
+      <div class="display">
+        <input type="text" name="display" class="result">
+      </div>
+      <div>
+        <input type="button" value="AC" class="operator" onclick="clearDisplay()">
+        <input type="button" value="DE" class="operator" onclick="deleteLastCharacter()">
+        <input type="button" value="." onclick="appendCharacter('.')">
+        <input type="button" value="/" class="operator" onclick="appendCharacter('/')">
+        <input type="button" value="^" class="operator" onclick="appendCharacter('^')">
+      </div>
+      <div>
+        <input type="button" value="9" onclick="appendCharacter('9')">
+        <input type="button" value="8" onclick="appendCharacter('8')">
+        <input type="button" value="7" onclick="appendCharacter('7')">
+        <input type="button" value="*" class="operator" onclick="appendCharacter('*')">
+      </div>
+      <div>
+        <input type="button" value="6" onclick="appendCharacter('6')"> 
+        <input type="button" value="5" onclick="appendCharacter('5')">
+        <input type="button" value="4" onclick="appendCharacter('4')">
+        <input type="button" value="-" class="operator" onclick="appendCharacter('-')">
+      </div>
+      <div>
+        <input type="button" value="3" onclick="appendCharacter('3')">
+        <input type="button" value="2" onclick="appendCharacter('2')">
+        <input type="button" value="1" onclick="appendCharacter('1')">
+        <input type="button" value="+" class="operator" onclick="appendCharacter('+')">
+      </div>
+      <div>
+        <input type="button" value="0" onclick="appendCharacter('0')">
+        <input type="button" value="00" onclick="appendCharacter('00')">
+        <input type="button" value="=" class="operator" onclick="calculateResult()">
+        <input type="button" value="X" id="close" onclick="document.getElementById('calc1').style.display = 'none'">
+      </div>
+    </form>
+  </div>
+  
+ <!-- <script>
+    let resultDisplayed = false;
+    //let decimalEntered = false;
+  
+    function getDisplay() {
+      return document.querySelector('.result');
+    }
+  
+    function clearDisplay() {
+      getDisplay().value = '';
+      resultDisplayed = false;
+    }
+  
+    function deleteLastCharacter() {
+      const display = getDisplay();
+      display.value = display.value.slice(0, -1);
+      resultDisplayed = false;
+    }
+  
+    function appendCharacter(character) {
+      const display = getDisplay();
+      const currentValue = display.value;
+      const lastChar = currentValue.slice(-1);
+      const operators = ['+', '-', '*', '/', '^'];
+  
+   
+     if (character === '.') {
+        display.value = '0'; // Start new number with '0.'
+        //decimalEntered = true;
+    }
+  
+  
+      if (resultDisplayed && !operators.includes(character) && character !== '.') {
+        display.value = character;
+        resultDisplayed = false;
+        return;
+      }
+  
+      if (operators.includes(character)) {
+        if (currentValue === '' && character !== '-') {
+          // Prevent any operator other than '-' at the start
+          return;
+        }
+        if (operators.includes(lastChar)) {
+          // Replace the last operator with the new one
+          display.value = currentValue.slice(0, -1) + character;
+        } else {
+          display.value += character;
+        }
+      } else if (character === '.') {
+        // Append '.' if it doesn't follow another '.'
+        if (lastChar !== '.') {
+          display.value += character;
+        }
+      } else {
+        display.value += character;
+      }
+      resultDisplayed = false;
+    }
+  
+    function calculateResult() {
+      const display = getDisplay();
+      let expression = display.value;
+  
+      // Ensure last character is not an operator
+      const lastChar = expression.slice(-1);
+      const operators = ['+', '-', '*', '/', '^'];
+  
+      if (operators.includes(lastChar)) {
+        expression = expression.slice(0, -1);
+      }
+  
+      // Replace ^ with ** for exponentiation
+      expression = expression.replace(/\^/g, '');
+  
+      try {
+        display.value = eval(expression);
+        resultDisplayed = true;
+      } catch (e) {
+        display.value = 'Error';
+        resultDisplayed = true;
+      }
+    }
+  </script>-->
+  
+    <script src="exam5.js"></script>
+    <script src="question.js"></script>
+      <script>
+  let resultDisplayed = false;
+
+  function getDisplay() {
+    return document.querySelector('.result');
+  }
+
+  function clearDisplay() {
+    getDisplay().value = '';
+    resultDisplayed = false;
+  }
+
+  function deleteLastCharacter() {
+    const display = getDisplay();
+    display.value = display.value.slice(0, -1);
+    resultDisplayed = false;
+  }
+
+  function appendCharacter(character) {
+    const display = getDisplay();
+    const currentValue = display.value;
+    const lastChar = currentValue.slice(-1);
+    const operators = ['+', '-', '*', '/', '^'];
+
+
+    if (resultDisplayed && !operators.includes(character) && character !== '.') {
+      display.value = character;
+      resultDisplayed = false;
+      return;
+    }
+
+    if (operators.includes(character)) {
+      if (currentValue === '' && character !== '-') {
+        // Prevent any operator other than '-' at the start
+        return;
+      }
+      if (operators.includes(lastChar)) {
+        // Replace the last operator with the new one
+        display.value = currentValue.slice(0, -1) + character;
+      } else {
+        display.value += character;
+      }
+    } else if (character === '.') {
+      // Append '.' if it doesn't follow another '.'
+      if (lastChar !== '.') {
+        display.value += character;
+      }
+    } else {
+      display.value += character;
+    }
+    resultDisplayed = false;
+  }
+
+  function calculateResult() {
+    const display = getDisplay();
+    let expression = display.value;
+
+    // Ensure last character is not an operator
+    const lastChar = expression.slice(-1);
+    const operators = ['+', '-', '*', '/', '^'];
+
+    if (operators.includes(lastChar)) {
+      expression = expression.slice(0, -1);
+    }
+
+    // Replace ^ with ** for exponentiation
+    expression = expression.replace(/\^/g, '');
+
+    try {
+      display.value = eval(expression);
+      resultDisplayed = true;
+    } catch (e) {
+      display.value = 'Error';
+      resultDisplayed = true;
+    }
+  }
+</script>
+  </body>
+</html>

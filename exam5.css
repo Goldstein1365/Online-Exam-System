@@ -1,0 +1,275 @@
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-image: linear-gradient(to right top, #bf7a30, #ca9148, #d5a861, #e1bf7d, #edd599); */
+  background-image: linear-gradient(30deg, #bf7a30 25%, 75%, #edd599);
+}
+
+#timer {
+  position: fixed;
+  text-align: center;
+  width: 90px;
+  top: 20px;
+  right: 50px;
+  font-size: 24px;
+  font-weight: 550;
+  background: #170555;
+  padding: 5px 15px;
+  color: #fff;
+  border-radius: 17px;
+}
+
+.calc {
+  position: fixed;
+  text-align: center;
+  /* width: 90px; */
+  top: 20px;
+  left: 50px;
+  outline: none;
+  background: transparent;
+  border: none;
+  font-size: 37px;
+  cursor: pointer;
+  /* font-weight: 550; */
+  color: #170555;
+}
+
+#demo {
+  position: fixed;
+  text-align: center;
+  /* width: 90px; */
+  top: 60px;
+  right: 40px;
+  font-size: 20px;
+  font-weight: 550;
+  /* background: #170555; */
+  padding: 5px 15px;
+  color: #cf1a1a;
+  border-radius: 17px;
+}
+
+#question-container {
+  margin-bottom: 20px;
+}
+
+#exam-title {
+  font-size: 50px;
+  color: #170555;
+  font-weight: 700;
+  font-family: "segoe script", sans-serif;
+}
+
+.option {
+  margin-bottom: 10px;
+}
+
+#navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.page-number {
+  width: 27px;
+  height: 27px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.attempted {
+  background-color: #4169e1;
+}
+
+.unattempted {
+  background-color: #fff;
+}
+
+.correct-answer {
+  background-color: #90ee90;
+  color: #000;
+}
+
+.incorrect-answer {
+  background-color: #ffb6c1;
+  color: #000;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: line-through;
+}
+
+#welcome-page {
+  text-align: center;
+}
+
+#welcome-page h1 {
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #170555;
+  line-height: 64px;
+}
+
+#exam-selection {
+  margin: 20px 0;
+}
+
+#exam-selection label {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 550;
+}
+
+#exam-selection select {
+  font-size: 17px;
+  padding: 10px;
+  outline: none;
+}
+
+#proceed-btn {
+  font-size: 18px;
+  background: rgba(253, 250, 250, 0.2);
+  margin-top: 100px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  outline: none;
+  border: 2px dotted #170555;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+#proceed-btn:hover {
+  background-color: rgba(23, 5, 85, 0.8);
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#prev-btn,
+#next-btn,
+#submit-btn {
+  width: 170px;
+  padding: 7px 25px;
+  border-radius: 17px;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  font-weight: 550;
+  color: #4169e1;
+  cursor: pointer;
+}
+
+#prev-btn span,
+#next-btn span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#prev-btn:hover,
+#next-btn:hover,
+#new-exam-btn:hover,
+#review-btn:hover,
+#submit-btn:hover {
+  color: #fff;
+  background: #4169e1;
+}
+
+#new-exam-btn,
+#review-btn {
+  width: 200px;
+  padding: 7px 25px;
+  border-radius: 17px;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  font-weight: 550;
+  color: #4169e1;
+  cursor: pointer;
+}
+
+#review-btn {
+  float: right;
+}
+
+/* calculator */
+
+.container {
+  display: flex;
+  align-items: center;
+  float: left;
+  position: fixed;
+  left: 30px;
+  top: 70px;
+  /*height: 200px;*/
+}
+
+.container form {
+  background: #170555;
+  border-radius: 8px;
+}
+
+.container form input {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 7px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  /*background: #edd599;*/
+  background: transparent;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.container input.result {
+  width: 190px;
+  font-size: 28px;
+  font-weight: 550;
+  text-align: right;
+  color: #000;
+  background-color: aliceblue;
+  height: 55px;
+  /*display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;*/
+}
+
+.container form input.operator {
+  /*color: #4169e1;*/
+  color: #33ffd8;
+  font-weight: 750;
+}
+
+#close {
+  color: red;
+}
